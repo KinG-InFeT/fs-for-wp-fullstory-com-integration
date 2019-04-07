@@ -9,6 +9,7 @@
  * Author: Vincenzo Luongo
  * Author URI: https://wordpress-plugins.luongovincenzo.it/
  * License: GPLv2 or later
+ * Text Domain: fs-for-wp-fullstory-com-integration
  */
 class FullStoryIntegrationPlugin {
 
