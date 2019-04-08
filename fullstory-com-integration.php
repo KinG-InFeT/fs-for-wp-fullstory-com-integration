@@ -11,7 +11,7 @@
  * License: GPLv2 or later
  * Text Domain: fs-for-wp-fullstory-com-integration
  */
-class FullStoryIntegrationPlugin {
+class FSforWPFullStoryIntegrationPlugin {
 
     function __construct() {
         add_action('wp_head', [$this, 'snippet_code']);
@@ -20,14 +20,14 @@ class FullStoryIntegrationPlugin {
     }
 
     public function save_settings() {
-        register_setting('fullstory-settings-group', 'fullstory_snippet_code', [$this, 'snippet_code_validate']);
-        register_setting('fullstory-settings-group', 'enable_fs_identity');
-        register_setting('fullstory-settings-group', 'fullstory_plugins_enabled');
+        register_setting('fullstory-settings-group', 'fsi_snippet_code', [$this, 'snippet_code_validate']);
+        register_setting('fullstory-settings-group', 'fsi_identity');
+        register_setting('fullstory-settings-group', 'fsi_plugin_enabled');
     }
 
     public function snippet_code_validate($value) {
         if (empty($value)) {
-            add_settings_error('fullstory_snippet_code', 'fullstory_snippet_code_validate', 'You must insert at least one snippet code.', 'error');
+            add_settings_error('fsi_snippet_code', 'fsi_snippet_code_validate', 'You must insert at least one snippet code.', 'error');
         }
 
         return $value;
@@ -39,13 +39,13 @@ class FullStoryIntegrationPlugin {
 
     public function snippet_code() {
 
-        if (get_option('fullstory_plugins_enabled')) {
+        if (get_option('fsi_plugin_enabled')) {
             
-            print PHP_EOL . '<!-- FullStory.com Snippet Plugin [START] -->' . PHP_EOL;
-            print PHP_EOL . get_option('fullstory_snippet_code') . PHP_EOL;
+            print PHP_EOL . '<!-- FS for WP - FullStory.com Integration Snippet [START] -->' . PHP_EOL;
+            print PHP_EOL . get_option('fsi_snippet_code') . PHP_EOL;
 
 
-            if (get_option('enable_fs_identity') && is_user_logged_in()) {
+            if (get_option('fsi_identity') && is_user_logged_in()) {
 
                 print PHP_EOL . '<!-- FS.identify [START] -->' . PHP_EOL;
                 print PHP_EOL . '<script type="text/javascript">' . PHP_EOL;
@@ -63,7 +63,7 @@ class FullStoryIntegrationPlugin {
                 print PHP_EOL . '<!-- FS.identify [END] -->' . PHP_EOL;
             }
 
-            print PHP_EOL . '<!-- FullStory.com Snippet Plugin [END] -->' . PHP_EOL . PHP_EOL;
+            print PHP_EOL . '<!-- FS for WP - FullStory.com Integration Snippet [END] -->' . PHP_EOL . PHP_EOL;
         }
     }
 
@@ -71,7 +71,7 @@ class FullStoryIntegrationPlugin {
         ?>
         <div class="wrap">
 
-            <h2 class="title"><?php _e('FullStory.com Integration Plugin'); ?></h2>
+            <h2 class="title"><?php _e('FS for WP - FullStory.com Integration'); ?></h2>
             <h5><?php _e('You can get your code snippet from <a href="https://www.fullstory.com/" target="_blank">Full Story Panel</a>'); ?></h5>
 
             <form method="POST" action="options.php">
@@ -80,32 +80,32 @@ class FullStoryIntegrationPlugin {
                 <table class="form-table">
 
                     <tr>
-                        <th><label for="fullstory_plugins_enabled">Enable FullStory Plugin?</label></th>
+                        <th><label for="fsi_plugin_enabled">Enable Integration?</label></th>
                         <td>
                             <label class="radio-inline">
-                                <input type="radio" name="fullstory_plugins_enabled" value="1" <?php print (get_option('fullstory_plugins_enabled') == 1) ? 'checked' : ''; ?> /> Yes 
+                                <input type="radio" name="fsi_plugin_enabled" value="1" <?php print (get_option('fsi_plugin_enabled') == 1) ? 'checked' : ''; ?> /> Yes 
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="fullstory_plugins_enabled" value="0"  <?php print (get_option('fullstory_plugins_enabled') == 0) ? 'checked' : ''; ?> /> No
+                                <input type="radio" name="fsi_plugin_enabled" value="0"  <?php print (get_option('fsi_plugin_enabled') == 0) ? 'checked' : ''; ?> /> No
                             </label>
                         </td>
                     </tr>
 
                     <tr>
-                        <th><label for="fullstory_snippet_code"><?php _e('Enter your code in the text area below'); ?></label></th>
+                        <th><label for="fsi_snippet_code"><?php _e('Enter your code in the text area below'); ?></label></th>
                         <td>
-                            <textarea class="form-control" style="width: 100%; height: 300px;" name="fullstory_snippet_code"><?php print esc_attr(get_option('fullstory_snippet_code')); ?></textarea>
+                            <textarea class="form-control" style="width: 100%; height: 300px;" name="fsi_snippet_code"><?php print esc_attr(get_option('fsi_snippet_code')); ?></textarea>
                         </td>
                     </tr>
 
                     <tr>
-                        <th><label for="enable_fs_identity">Enable FS Identity?</label></th>
+                        <th><label for="fsi_identity">Enable FS Identity?</label></th>
                         <td>
                             <label class="radio-inline">
-                                <input type="radio" name="enable_fs_identity" value="1" <?php print (get_option('enable_fs_identity') == 1) ? 'checked' : ''; ?> /> Yes 
+                                <input type="radio" name="fsi_identity" value="1" <?php print (get_option('fsi_identity') == 1) ? 'checked' : ''; ?> /> Yes 
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="enable_fs_identity" value="0"  <?php print (get_option('enable_fs_identity') == 0) ? 'checked' : ''; ?> /> No
+                                <input type="radio" name="fsi_identity" value="0"  <?php print (get_option('fsi_identity') == 0) ? 'checked' : ''; ?> /> No
                             </label>
                         </td>
                     </tr>
@@ -122,4 +122,4 @@ class FullStoryIntegrationPlugin {
 
 }
 
-$fullStoryIntegrationPlugin = new FullStoryIntegrationPlugin();
+$FSforWPFullStoryIntegrationPlugin = new FSforWPFullStoryIntegrationPlugin();
