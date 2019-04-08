@@ -18,7 +18,7 @@ FS for WP - FullStory.com Integration is a wordpress plugin makes it simple to a
 
 1. Upload `fs-for-wp-fullstory-com-integration` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Edit the plugin settings by clicking FullStory Integration on the settings navbar
+3. Edit the plugin settings by clicking "FullStory Settings" on the settings navbar
 
 == Frequently Asked Questions ==
 
@@ -41,7 +41,8 @@ Setup an free (or premium) account and get your code snippet from [Full Story](h
 
 == Screenshots ==
 
-1. FullStory.com Settings Panel
+1. FullStory Settings menu
+2. Plugin Settings
 
 
 == Changelog ==
