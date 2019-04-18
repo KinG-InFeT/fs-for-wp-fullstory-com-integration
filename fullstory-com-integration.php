@@ -5,7 +5,7 @@
  * Plugin URI: https://wordpress-plugins.luongovincenzo.it/#fullstory-integration
  * Description: FS for WP - FullStory.com Integration is a wordpress plugin makes it simple to add the FullStory code snippet to your website.
  * Donate URI: https://wordpress-plugins.luongovincenzo.it/#donate
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Vincenzo Luongo
  * Author URI: https://wordpress-plugins.luongovincenzo.it/
  * License: GPLv2 or later
@@ -17,6 +17,27 @@ class FSforWPFullStoryIntegrationPlugin {
         add_action('wp_head', [$this, 'snippet_code']);
         add_action('admin_menu', [$this, 'add_menu']);
         add_action('admin_init', [$this, 'save_settings']);
+        add_filter('plugin_action_links_' . plugin_basename(__FILE__), [$this, 'add_plugin_actions']);
+
+        add_filter('fsi_additional_data', function($dataFields) {
+            if (class_exists('woocommerce')) {
+                $userID = get_current_user_id();
+                
+                $dataFields["totalWooOrders_int"] = wc_get_customer_order_count($userID);
+                $dataFields["totalWooAmountSpent_real"] = wc_get_customer_total_spent($userID);
+            }
+            return $dataFields;
+        });
+    }
+
+    public function add_plugin_actions($links) {
+
+        $addLinks = [
+            '<a href="' . admin_url('options-general.php?page=fullstory-settings') . '">' . _e('Settings') . '</a>',
+            '<a href="https://wordpress-plugins.luongovincenzo.it/#donate" target="_blank">' . _e('Donate') . '</a>',
+        ];
+
+        return array_merge($links, $addLinks);
     }
 
     public function save_settings() {
@@ -26,6 +47,7 @@ class FSforWPFullStoryIntegrationPlugin {
     }
 
     public function snippet_code_validate($value) {
+
         if (empty($value)) {
             add_settings_error('fsi_snippet_code', 'fsi_snippet_code_validate', 'You must insert at least one snippet code.', 'error');
         }
@@ -40,7 +62,7 @@ class FSforWPFullStoryIntegrationPlugin {
     public function snippet_code() {
 
         if (get_option('fsi_plugin_enabled')) {
-            
+
             print PHP_EOL . '<!-- FS for WP - FullStory.com Integration Snippet [START] -->' . PHP_EOL;
             print PHP_EOL . get_option('fsi_snippet_code') . PHP_EOL;
 
@@ -51,14 +73,25 @@ class FSforWPFullStoryIntegrationPlugin {
                 print PHP_EOL . '<script type="text/javascript">' . PHP_EOL;
 
                 $current_user = wp_get_current_user();
+                $current_user_data = get_userdata(get_current_user_id());
 
-                print PHP_EOL . "FS.identify('" . $current_user->ID . "-" . $current_user->user_email . "', {" . PHP_EOL
-                        . "        displayName: '" . $current_user->display_name . "'," . PHP_EOL
-                        . "        email: '" . $current_user->user_email . "'," . PHP_EOL
-                        . "        // TODO: Add your own custom user variables here, details at" . PHP_EOL
-                        . "        // http://help.fullstory.com/develop-js/setuservars " . PHP_EOL
-                        . "        reviewsWritten_int: 14, " . PHP_EOL
-                        . "    });";
+                $fullStoryUserData = [
+                    "displayName" => $current_user->display_name,
+                    "email" => $current_user->user_email,
+                    "roles_str" => implode(', ', $current_user_data->roles)
+                ];
+                
+                //http://help.fullstory.com/develop-js/setuservars
+
+                foreach (apply_filters('fsi_additional_data', []) as $key => $value) {
+                    $fullStoryUserData[$key] = $value;
+                }
+
+                print PHP_EOL . "window.document.onload = function(e) { " . PHP_EOL;
+                print PHP_EOL . "\t var FSIAdditionalData = " . json_encode($fullStoryUserData) . "; " . PHP_EOL;
+                print PHP_EOL . "\t FS.identify('" . $current_user->ID . "-" . $current_user->user_email . "', FSIAdditionalData);";
+                print PHP_EOL . " } " . PHP_EOL;
+                
                 print PHP_EOL . '</script>' . PHP_EOL;
                 print PHP_EOL . '<!-- FS.identify [END] -->' . PHP_EOL;
             }
@@ -72,7 +105,7 @@ class FSforWPFullStoryIntegrationPlugin {
         <div class="wrap">
 
             <h2 class="title"><?php _e('FS for WP - FullStory.com Integration'); ?></h2>
-            <h5><?php _e('You can get your code snippet from <a href="https://www.fullstory.com/" target="_blank">Full Story Panel</a>'); ?></h5>
+            <h5><?php _e('You can get your code snippet from <a href="https://app.fullstory.com" target="_blank">Full Story Panel</a>'); ?></h5>
 
             <form method="POST" action="options.php">
                 <?php settings_fields('fullstory-settings-group'); ?>
