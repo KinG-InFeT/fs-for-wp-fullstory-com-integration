@@ -1,7 +1,7 @@
 === FS for WP - FullStory.com Integration ===
 Contributors: Vincenzo Luongo
-Donate link: https://www.paypal.me/vluongo92
-Tags: full story, fullstory.com, fullstory, fullstory integration
+Donate link: https://wordpress-plugins.luongovincenzo.it/#donate
+Tags: full story, fullstory.com, fullstory, fullstory integration, woocommerce fullstory integration
 Requires at least: 4.9
 Tested up to: 5.1.1
 Requires PHP: 5.6
@@ -47,5 +47,13 @@ Setup an free (or premium) account and get your code snippet from [Full Story](h
 
 == Changelog ==
 
-= 1.0 =
+= 1.1.0 =
+* Add Plugin Links
+* Add complete support for Woocommerce 3.6.x
+* Add more information in FS additions data from woocommerce (Total order, total amount spent)
+* Add role information in FS user data
+* Change donation url
+* Minor Improvements
+
+= 1.0.0 =
 * Public release
