@@ -49,6 +49,7 @@ Setup an free (or premium) account and get your code snippet from [Full Story](h
 
 = 1.2.0 =
 * Compatible for Wordpress 5.3
+* Minor bug fix
 
 = 1.1.0 =
 * Add Plugin Links

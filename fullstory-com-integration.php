@@ -22,7 +22,7 @@ class FSforWPFullStoryIntegrationPlugin {
         add_filter('fsi_additional_data', function($dataFields) {
             if (class_exists('woocommerce')) {
                 $userID = get_current_user_id();
-                
+
                 $dataFields["totalWooOrders_int"] = wc_get_customer_order_count($userID);
                 $dataFields["totalWooAmountSpent_real"] = wc_get_customer_total_spent($userID);
             }
@@ -32,14 +32,10 @@ class FSforWPFullStoryIntegrationPlugin {
 
     public function add_plugin_actions($links) {
 
-        $addLinks = [
-            '<a href="' . admin_url('options-general.php?page=fullstory-settings') . '">' . _e('Settings') . '</a>',
-            '<a href="https://wordpress-plugins.luongovincenzo.it/#donate" target="_blank">' . _e('Donate') . '</a>',
-        ];
+        $links[] = '<a href="' . esc_url(get_admin_url(null, 'options-general.php?page=fullstory-settings')) . '">Settings</a>';
+        $links[] = '<a href="https://wordpress-plugins.luongovincenzo.it/#donate" target="_blank">Donate</a>';
 
-        print_r($addLinks);
-
-        return array_merge($links, $addLinks);
+        return $links;
     }
 
     public function save_settings() {
@@ -82,7 +78,7 @@ class FSforWPFullStoryIntegrationPlugin {
                     "email" => $current_user->user_email,
                     "roles_str" => implode(', ', $current_user_data->roles)
                 ];
-                
+
                 //http://help.fullstory.com/develop-js/setuservars
 
                 foreach (apply_filters('fsi_additional_data', []) as $key => $value) {
@@ -93,7 +89,7 @@ class FSforWPFullStoryIntegrationPlugin {
                 print PHP_EOL . "\t var FSIAdditionalData = " . json_encode($fullStoryUserData) . "; " . PHP_EOL;
                 print PHP_EOL . "\t FS.identify('" . $current_user->ID . "-" . $current_user->user_email . "', FSIAdditionalData);";
                 print PHP_EOL . " } " . PHP_EOL;
-                
+
                 print PHP_EOL . '</script>' . PHP_EOL;
                 print PHP_EOL . '<!-- FS.identify [END] -->' . PHP_EOL;
             }
