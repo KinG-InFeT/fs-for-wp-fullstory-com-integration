@@ -37,6 +37,8 @@ class FSforWPFullStoryIntegrationPlugin {
             '<a href="https://wordpress-plugins.luongovincenzo.it/#donate" target="_blank">' . _e('Donate') . '</a>',
         ];
 
+        print_r($addLinks);
+
         return array_merge($links, $addLinks);
     }
 
