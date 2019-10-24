@@ -3,7 +3,7 @@ Contributors: Vincenzo Luongo
 Donate link: https://wordpress-plugins.luongovincenzo.it/#donate
 Tags: full story, fullstory.com, fullstory, fullstory integration, woocommerce fullstory integration
 Requires at least: 4.9
-Tested up to: 5.2
+Tested up to: 5.3
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -46,6 +46,9 @@ Setup an free (or premium) account and get your code snippet from [Full Story](h
 
 
 == Changelog ==
+
+= 1.2.0 =
+* Compatible for Wordpress 5.3
 
 = 1.1.0 =
 * Add Plugin Links
