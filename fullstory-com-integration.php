@@ -5,7 +5,7 @@
  * Plugin URI: https://wordpress-plugins.luongovincenzo.it/#fullstory-integration
  * Description: FS for WP - FullStory.com Integration is a wordpress plugin makes it simple to add the FullStory code snippet to your website.
  * Donate URI: https://donate.luongovincenzo.it/
- * Version: 1.2.1
+ * Version: 1.3.0
  * Author: Vincenzo Luongo
  * Author URI: https://wordpress-plugins.luongovincenzo.it/
  * License: GPLv2 or later
@@ -33,7 +33,7 @@ class FSforWPFullStoryIntegrationPlugin {
     public function add_plugin_actions($links) {
 
         $links[] = '<a href="' . esc_url(get_admin_url(null, 'options-general.php?page=fullstory-settings')) . '">Settings</a>';
-        $links[] = '<a href="https://wordpress-plugins.luongovincenzo.it/#donate" target="_blank">Donate</a>';
+        $links[] = '<a href="https://donate.luongovincenzo.it/" target="_blank">Donate</a>';
 
         return $links;
     }
