@@ -1,16 +1,14 @@
 <?php
-
 /**
  * Plugin Name: FS for WP - FullStory.com Integration
  * Plugin URI: https://wordpress-plugins.luongovincenzo.it/#fullstory-integration
  * Description: FS for WP - FullStory.com Integration is a wordpress plugin makes it simple to add the FullStory code snippet to your website.
- * Version: 1.4.0
+ * Version: 1.4.1
  * Author: Vincenzo Luongo
  * Author URI: https://www.luongovincenzo.it/
  * License: GPLv2 or later
  * Text Domain: fs-for-wp-fullstory-com-integration
  */
-
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -23,7 +21,7 @@ class FSforWPFullStoryIntegrationPlugin {
         add_action('admin_init', [$this, 'save_settings']);
         add_filter('plugin_action_links_' . plugin_basename(__FILE__), [$this, 'add_plugin_actions']);
 
-        add_filter('fsi_additional_data', function($dataFields) {
+        add_filter('fsi_additional_data', function ($dataFields) {
             if (class_exists('woocommerce')) {
                 $userID = get_current_user_id();
 
@@ -64,7 +62,6 @@ class FSforWPFullStoryIntegrationPlugin {
 
             print PHP_EOL . '<!-- FS for WP - FullStory.com Integration Snippet [START] -->' . PHP_EOL;
             print PHP_EOL . get_option('fsi_snippet_code') . PHP_EOL;
-
 
             if (get_option('fsi_identity') && is_user_logged_in()) {
 
@@ -107,8 +104,8 @@ class FSforWPFullStoryIntegrationPlugin {
             <h5><?php _e('You can get your code snippet from <a href="https://app.fullstory.com" target="_blank">Full Story Panel</a>'); ?></h5>
 
             <form method="POST" action="options.php">
-                <?php settings_fields('fullstory-settings-group'); ?>
-                <?php do_settings_sections('fullstory-settings-group'); ?>
+        <?php settings_fields('fullstory-settings-group'); ?>
+        <?php do_settings_sections('fullstory-settings-group'); ?>
                 <table class="form-table">
 
                     <tr>
