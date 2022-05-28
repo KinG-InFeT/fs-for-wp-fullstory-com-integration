@@ -3,7 +3,7 @@
  * Plugin Name: FS for WP - FullStory.com Integration
  * Plugin URI: https://wordpress-plugins.luongovincenzo.it/#fullstory-integration
  * Description: FS for WP - FullStory.com Integration is a wordpress plugin makes it simple to add the FullStory code snippet to your website.
- * Version: 1.4.1
+ * Version: 1.4.2
  * Author: Vincenzo Luongo
  * Author URI: https://www.luongovincenzo.it/
  * License: GPLv2 or later
@@ -104,8 +104,8 @@ class FSforWPFullStoryIntegrationPlugin {
             <h5><?php _e('You can get your code snippet from <a href="https://app.fullstory.com" target="_blank">Full Story Panel</a>'); ?></h5>
 
             <form method="POST" action="options.php">
-        <?php settings_fields('fullstory-settings-group'); ?>
-        <?php do_settings_sections('fullstory-settings-group'); ?>
+                <?php settings_fields('fullstory-settings-group'); ?>
+                <?php do_settings_sections('fullstory-settings-group'); ?>
                 <table class="form-table">
 
                     <tr>

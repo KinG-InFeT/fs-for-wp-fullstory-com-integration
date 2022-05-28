@@ -1,8 +1,8 @@
 === FS for WP - FullStory.com Integration ===
 Contributors: Vincenzo Luongo
 Tags: full story, fullstory.com, fullstory, fullstory integration, woocommerce fullstory integration
-Requires at least: 4.9
-Tested up to: 5.9
+Requires at least: 5.0
+Tested up to: 6.5
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,9 @@ Setup an free (or premium) account and get your code snippet from [Full Story](h
 
 
 == Changelog ==
+
+= 1.4.2 =
+* Support for Wordpress 6.x added
 
 = 1.4.1 =
 * Minor Bug Fix and added support for Wordpress 5.9
