@@ -1,0 +1,139 @@
+# Copyright (C) 2026 Vincenzo Luongo
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: FS for WP - FullStory.com Integration 3.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fs-for-wp-"
+"fullstory-com-integration\n"
+"POT-Creation-Date: 2026-09-16T11:39:26+00:00\n"
+"PO-Revision-Date: 2026-09-16 13:20+0200\n"
+"Last-Translator: Vincenzo Luongo\n"
+"Language-Team: Italian\n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: fs-for-wp-fullstory-com-integration\n"
+
+#. Plugin Name of the plugin
+#: fullstory-com-integration.php fullstory-com-integration.php:209
+msgid "FS for WP - FullStory.com Integration"
+msgstr "FS for WP - FullStory.com Integration"
+
+#. Plugin URI of the plugin
+#: fullstory-com-integration.php
+msgid ""
+"https://wordpress-plugins.luongovincenzo.it/plugin/fs-for-wp-fullstory-com-"
+"integration"
+msgstr ""
+"https://wordpress-plugins.luongovincenzo.it/plugin/fs-for-wp-fullstory-com-"
+"integration"
+
+#. Description of the plugin
+#: fullstory-com-integration.php
+msgid ""
+"Add the FullStory code snippet to your website and identify logged-in users."
+msgstr ""
+"Aggiunge lo snippet di FullStory al tuo sito e identifica gli utenti "
+"connessi."
+
+#. Author of the plugin
+#: fullstory-com-integration.php
+msgid "Vincenzo Luongo"
+msgstr "Vincenzo Luongo"
+
+#. Author URI of the plugin
+#: fullstory-com-integration.php
+msgid "https://www.luongovincenzo.it/"
+msgstr "https://www.luongovincenzo.it/"
+
+#: fullstory-com-integration.php:55
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: fullstory-com-integration.php:90
+msgid "You are not allowed to change the code snippet."
+msgstr "Non hai i permessi per modificare lo snippet."
+
+#: fullstory-com-integration.php:100
+msgid "You must insert at least one snippet code."
+msgstr "Devi inserire lo snippet di FullStory."
+
+#: fullstory-com-integration.php:110 fullstory-com-integration.php:111
+msgid "FullStory Settings"
+msgstr "Impostazioni FullStory"
+
+#. translators: %s: link to the FullStory panel
+#: fullstory-com-integration.php:213
+#, php-format
+msgid "Get your code snippet from %s"
+msgstr "Copia il tuo snippet dal %s"
+
+#: fullstory-com-integration.php:214
+msgid "FullStory Panel"
+msgstr "pannello di FullStory"
+
+#: fullstory-com-integration.php:224
+msgid "General Settings"
+msgstr "Impostazioni generali"
+
+#: fullstory-com-integration.php:227
+msgid "Enable Integration"
+msgstr "Attiva integrazione"
+
+#: fullstory-com-integration.php:231 fullstory-com-integration.php:264
+msgid "Yes"
+msgstr "Sì"
+
+#: fullstory-com-integration.php:235 fullstory-com-integration.php:268
+msgid "No"
+msgstr "No"
+
+#: fullstory-com-integration.php:238
+msgid "Enable or disable the FullStory tracking code on your website."
+msgstr ""
+"Attiva o disattiva il codice di tracciamento di FullStory sul tuo sito."
+
+#: fullstory-com-integration.php:242
+msgid "FullStory Code Snippet"
+msgstr "Snippet di FullStory"
+
+#: fullstory-com-integration.php:247
+msgid ""
+"Paste the FullStory JavaScript snippet code from your FullStory dashboard."
+msgstr "Incolla lo snippet JavaScript copiato dalla dashboard di FullStory."
+
+#: fullstory-com-integration.php:249
+msgid ""
+"Only users allowed to publish unfiltered HTML can change the code snippet."
+msgstr ""
+"Solo gli utenti autorizzati a pubblicare HTML non filtrato possono "
+"modificare lo snippet."
+
+#: fullstory-com-integration.php:257
+msgid "User Identity"
+msgstr "Identità utente"
+
+#: fullstory-com-integration.php:260
+msgid "Enable FS.identify"
+msgstr "Attiva FS.identify"
+
+#: fullstory-com-integration.php:271
+msgid ""
+"When enabled, logged-in users are identified in FullStory with their display "
+"name, email and roles, plus order count and total spent when WooCommerce is "
+"active."
+msgstr ""
+"Se attivo, gli utenti connessi vengono identificati in FullStory con nome "
+"visualizzato, email e ruoli, più numero di ordini e totale speso quando "
+"WooCommerce è attivo."
+
+#: fullstory-com-integration.php:275
+msgid "Save Settings"
+msgstr "Salva impostazioni"
+
+#: fullstory-com-integration.php:280
+msgid "Plugin Homepage"
+msgstr "Sito del plugin"
